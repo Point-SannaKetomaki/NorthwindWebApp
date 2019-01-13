@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="northwindEntities-Web.config Connection String" description="northwindEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Models.NorthwindModel.csdl|res://*/Models.NorthwindModel.ssdl|res://*/Models.NorthwindModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=SKE-DESKTOP-D91\SQLEXSANNAKE;initial catalog=northwind;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\OWNER\\source\\repos\\NorthwindWebApp-SKe\\NorthwindWebApp-SKe\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='northwindEntities']/@connectionString" />
+  </parameter>
+</parameters>

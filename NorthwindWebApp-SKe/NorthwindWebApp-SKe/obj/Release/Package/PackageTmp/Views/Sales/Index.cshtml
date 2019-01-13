@@ -1,0 +1,59 @@
+﻿<!--Haetaan tiedot Customers-taulusta-->
+@model IEnumerable<NorthwindWebApp_SKe.Models.Customers>
+
+@{
+    ViewBag.Title = "List Customer";
+}
+
+@section scripts{
+    <script>
+        $(function () {
+            $(".displayOrderDataLink").click(function () {
+                var CustomerID = $(this).data("customerid");
+                //alert("Klikattiin: " + CustomerID);
+
+                var url = "GetOrderData/" + CustomerID;
+                $.getJSON(url, null, function (data) {
+                    //alert("Kutsu onnistui, data = " + data.html);
+
+                    var id = "#orderDetailRow-" + CustomerID;
+                    $(id).html(data.html);
+                    $(id).css("display", "block");
+                });
+
+                return false;  //selain ei käsittele <a href="#" linkkiä mutta lataa yllä olevan datan palvelimelta
+                                // ja näkymä ei palaudu takaisin sivun ylälaitaan
+            });
+        });
+    </script>
+    }
+<h2>List Customer</h2>
+
+<table class="table table-striped"> <!--class => bootstrapin muotoilu-->
+    <thead>
+        <tr>
+            <th>Customer ID</th>
+            <th>Company Name</th>
+            <th>Contact Person</th>
+            <th>City</th>
+            <th>Country</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (NorthwindWebApp_SKe.Models.Customers cust in Model)
+        {
+            <tr>
+                <td><a href="#" class="displayOrderDataLink" data-customerid="@cust.CustomerID"><span class="glyphicon glyphicon-plus-sign"></span></a>@cust.CustomerID</td>
+                <td>@cust.CompanyName</td>
+                <td>@cust.ContactName</td>
+                <td>@cust.City</td>
+                <td>@cust.Country</td>
+            </tr>
+            <tr id="orderDetailRow-@cust.CustomerID" style="display:none;">
+                
+
+            </tr>
+        }
+    </tbody>
+</table>
+
